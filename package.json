@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
   "author": "Dialexa",
   "contributors": [
     "Andrew Turner <andrew@dialexa.com>"
@@ -22,5 +25,12 @@
   "repository": "git@github.com:dialexa/hapi-custom-error-messages.git",
   "homepage": "https://github.com/dialexa/hapi-custom-error-messages",
   "bugs": "https://github.com/dialexa/hapi-custom-error-messages/issues",
-  "dependencies": {}
+  "dependencies": {
+    "boom": "~3.1.1",
+    "hoek": "~3.0.4"
+  },
+  "devDependencies": {
+    "hapi": "~11.1.4",
+    "joi": "~7.1.0"
+  }
 }
