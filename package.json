@@ -1,0 +1,26 @@
+{
+  "name": "hapi-custom-error-messages",
+  "version": "0.1.0",
+  "description": "Custom Error Messages for Hapi Routes",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dialexa",
+  "contributors": [
+    "Andrew Turner <andrew@dialexa.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "hapi",
+    "joi",
+    "custom",
+    "error",
+    "message",
+    "validation"
+  ],
+  "repository": "git@github.com:dialexa/hapi-custom-error-messages.git",
+  "homepage": "https://github.com/dialexa/hapi-custom-error-messages",
+  "bugs": "https://github.com/dialexa/hapi-custom-error-messages/issues",
+  "dependencies": {}
+}
