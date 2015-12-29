@@ -3,11 +3,6 @@ hapi-custom-error-messages
 
 Custom Error Messages for Hapi.js Joi Validation
 
-## Installation
-```sh
-npm install --save hapi-custom-error-messages
-```
-
 ## Usage
 
 #### Set Up Custom Messages
