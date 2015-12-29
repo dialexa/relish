@@ -56,7 +56,7 @@ server.connection({
 {
   "statusCode": 400,
   "error": "Bad Request",
-  "message": "Please give us your email, Please give us your email, Phone is required, Generic email message",
+  "message": "Please give us your email, Phone is required, Generic email message",
   "validation": {
     "source": "payload",
     "errors": [
@@ -66,13 +66,6 @@ server.connection({
         "message": "Please give us your email",
         "type": "any",
         "constraint": "empty"
-      },
-      {
-        "key": "email",
-        "path": "data.email",
-        "message": "Please give us your email",
-        "type": "string",
-        "constraint": "email"
       },
       {
         "key": "phone",
