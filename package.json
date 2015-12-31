@@ -4,7 +4,8 @@
   "description": "Custom Error Messages for Hapi Routes",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -r console -t 100 -a code",
+    "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
     "node": ">= 4.0.0"
@@ -30,7 +31,9 @@
     "hoek": "~3.0.4"
   },
   "devDependencies": {
+    "code": "~2.1.0",
     "hapi": "~11.1.4",
-    "joi": "~7.1.0"
+    "joi": "~7.1.0",
+    "lab": "~8.0.1"
   }
 }
