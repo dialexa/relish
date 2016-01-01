@@ -3,6 +3,34 @@ hapi-custom-error-messages
 
 Custom Error Messages for Hapi.js Joi Validation
 
+## Example Response
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "Please enter a valid email, Please enter your full name",
+  "validation": {
+    "source": "payload",
+    "errors": [
+      {
+        "key": "name",
+        "path": "data.name",
+        "message": "Please enter your full name",
+        "type": "any",
+        "constraint": "required"
+      },
+      {
+        "key": "email",
+        "path": "data.email",
+        "message": "Please enter a valid email",
+        "type": "string",
+        "constraint": "email"
+      }
+    ]
+  }
+}
+```
+
 ## Usage
 
 ```js
@@ -13,6 +41,7 @@ const ErrorMessages = require('hapi-custom-error-messages')({
   }
 });
 ```
+
 ### `.failAction` Helper
 This helper function can be used in place of a custom `failAction` in your Hapi.js [Route Options](http://hapijs.com/api#route-options)
 
@@ -50,32 +79,4 @@ server.route({
   },
   handler: (request, reply) => reply()
 });
-```
-
-### Example Response
-```json
-{
-  "statusCode": 400,
-  "error": "Bad Request",
-  "message": "Please enter a valid email, Please enter your full name",
-  "validation": {
-    "source": "payload",
-    "errors": [
-      {
-        "key": "name",
-        "path": "data.name",
-        "message": "Please enter your full name",
-        "type": "any",
-        "constraint": "required"
-      },
-      {
-        "key": "email",
-        "path": "data.email",
-        "message": "Please enter a valid email",
-        "type": "string",
-        "constraint": "email"
-      }
-    ]
-  }
-}
 ```
