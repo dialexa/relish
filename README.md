@@ -80,3 +80,5 @@ server.route({
   handler: (request, reply) => reply()
 });
 ```
+
+_See examples directory for more examples._
