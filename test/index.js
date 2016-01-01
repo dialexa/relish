@@ -57,11 +57,11 @@ before(function(done) {
     handler: (request, reply) => reply()
   }, {
     method: 'POST',
-    path: path + '/quotes',
+    path: path + '/no-quotes',
     config: {
       validate: {
         payload: payload,
-        failAction: ErrorMessages({ stripQuotes: false }).failAction,
+        failAction: ErrorMessages().options({ stripQuotes: true }).failAction,
       }
     },
     handler: (request, reply) => reply()
@@ -71,7 +71,7 @@ before(function(done) {
     config: {
       validate: {
         payload: payload,
-        failAction: ErrorMessages({ messages: customMessages }).failAction,
+        failAction: ErrorMessages().options({ messages: customMessages }).failAction,
       }
     },
     handler: (request, reply) => reply()
@@ -89,25 +89,31 @@ describe('Error Messages', function() {
       done();
     });
 
-    it('should allow options to be chainable', function(done) {
-      const test = ErrorMessages().options({});
+    it('should accept options in the constructor', function(done) {
+      const test = ErrorMessages({ stripQuotes: true, messages: customMessages });
       expect(test).to.be.an.object().and.to.contain(['failAction']);
       done();
     });
 
-    it('should strip quotes by default', function(done) {
+    it('should allow options to be chainable', function(done) {
+      const test = ErrorMessages().options();
+      expect(test).to.be.an.object().and.to.contain(['failAction']);
+      done();
+    });
+
+    it('should not strip quotes by default', function(done) {
       server.inject({ method: 'POST', url: path + '/no-options', payload: {} }, (res) => {
         res.result.validation.errors.map((error) => {
-          expect(error.message).to.not.contain(['"']);
+          expect(error.message).to.contain(['"']);
         });
         done();
       });
     });
 
-    it('should not strip quotes when stripQuotes option is false', function(done) {
-      server.inject({ method: 'POST', url: path + '/quotes', payload: {} }, (res) => {
+    it('should strip quotes when stripQuotes option is true', function(done) {
+      server.inject({ method: 'POST', url: path + '/no-quotes', payload: {} }, (res) => {
         res.result.validation.errors.map((error) => {
-          expect(error.message).to.contain(['"']);
+          expect(error.message).to.not.contain(['"']);
         });
         done();
       });
@@ -158,7 +164,7 @@ describe('Error Messages', function() {
       });
     });
 
-    it('should return custom error message for a generic key match', function(done) {
+    it('should return custom error message for a exact path match', function(done) {
       server.inject({ method: 'POST', url: path + '/messages',
         payload: {
           data: { phone: 'this is not a phone number' }

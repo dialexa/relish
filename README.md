@@ -6,21 +6,33 @@ Custom Error Messages for Hapi.js Joi Validation
 ## Usage
 
 ```js
-const Hapi = require('hapi');
-const Joi = require('joi');
-const ErrorMessages = require('hapi-custom-error-messages');
+const ErrorMessages = require('hapi-custom-error-messages')({
+  messages: {
+    'email': 'Please enter a valid email',
+    'data.name': 'Please enter your full name'
+  }
+});
+```
+### `.failAction` Helper
+This helper function can be used in place of a custom `failAction` in your Hapi.js [Route Options](http://hapijs.com/api#route-options)
 
-const server = new Hapi.Server();
+#### Global Usage
+This sets the `failAction` for **all routes**
+```js
 server.connection({
   port: 3000,
   routes: {
     validate: {
       // use as a global failAction (applies to all routes)
-      failAction: ErrorMessages().failAction
+      failAction: ErrorMessages.failAction
     }
   }
 });
+```
 
+#### Individual Route
+This sets the `failAction` for **only this route**
+```js
 server.route({
   method: 'POST',
   path: '/',
@@ -33,23 +45,14 @@ server.route({
         })
       },
       // use as your server route's failAction
-      failAction: ErrorMessages({
-        messages: {
-          'email': 'Please enter a valid email',
-          'data.name': 'Please enter your full name'
-        }
-      }).failAction
+      failAction: ErrorMessages.failAction
     }
   },
-  handler: function (request, reply) {
-    reply();
-  }
+  handler: (request, reply) => reply()
 });
-
-server.start(() => { console.log('Server running at:', server.info.uri); });
 ```
 
-#### Example Response
+### Example Response
 ```json
 {
   "statusCode": 400,
