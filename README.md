@@ -1,5 +1,6 @@
 hapi-custom-error-messages
----
+==========================
+[![Build Status](https://travis-ci.org/dialexa/hapi-custom-error-messages.svg?branch=master)](https://travis-ci.org/dialexa/hapi-custom-error-messages)
 
 Custom Error Messages for Hapi.js Joi Validation
 
