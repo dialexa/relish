@@ -20,11 +20,12 @@
   "keywords": [
     "hapi",
     "joi",
-    "custom",
-    "better",
     "error",
     "message",
+    "error message",
     "validation",
+    "custom error message",
+    "better error message",
     "relish"
   ],
   "repository": "git@github.com:dialexa/relish.git",
