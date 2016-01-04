@@ -50,10 +50,10 @@ _Better error messages for Hapi.js Joi validation_
 }
 ```
 
-<!-- ## Installation
+## Installation
 ```sh
 npm install relish --save
-``` -->
+```
 
 ## Basic Usage
 First load and initialize the module
