@@ -4,8 +4,8 @@
   "description": "Better Error Messages for Hapi.js Joi validation_",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -r console -t 100 -a code",
-    "test-ci": "lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
+    "test": "standard && lab -r console -t 100 -a code",
+    "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
@@ -38,6 +38,7 @@
     "coveralls": "~2.11.6",
     "hapi": "~11.1.4",
     "joi": "~7.1.0",
-    "lab": "~8.0.1"
+    "lab": "~8.0.1",
+    "standard": "~5.4.1"
   }
 }
