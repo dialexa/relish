@@ -1,7 +1,7 @@
 {
   "name": "relish",
   "version": "0.1.1",
-  "description": "Better Error Messages for Hapi Routes",
+  "description": "Better Error Messages for Hapi.js Joi validation_",
   "main": "lib/index.js",
   "scripts": {
     "test": "lab -r console -t 100 -a code",
