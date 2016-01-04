@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const Joi = require('joi');
-const ErrorMessages = require('../lib')
+const Relish = require('../lib')
 
 const Code = require('code');
 const Lab = require('lab');
@@ -51,7 +51,7 @@ before(function(done) {
     config: {
       validate: {
         payload: payload,
-        failAction: ErrorMessages().failAction,
+        failAction: Relish().failAction,
       }
     },
     handler: (request, reply) => reply()
@@ -61,7 +61,7 @@ before(function(done) {
     config: {
       validate: {
         payload: payload,
-        failAction: ErrorMessages().options({ stripQuotes: true }).failAction,
+        failAction: Relish().options({ stripQuotes: true }).failAction,
       }
     },
     handler: (request, reply) => reply()
@@ -71,7 +71,7 @@ before(function(done) {
     config: {
       validate: {
         payload: payload,
-        failAction: ErrorMessages().options({ messages: customMessages }).failAction,
+        failAction: Relish().options({ messages: customMessages }).failAction,
       }
     },
     handler: (request, reply) => reply()
@@ -84,19 +84,19 @@ describe('Error Messages', function() {
   describe('Options', function() {
 
     it('should not be required', function(done) {
-      const test = ErrorMessages();
+      const test = Relish();
       expect(test).to.be.an.object().and.to.contain(['failAction']);
       done();
     });
 
     it('should accept options in the constructor', function(done) {
-      const test = ErrorMessages({ stripQuotes: true, messages: customMessages });
+      const test = Relish({ stripQuotes: true, messages: customMessages });
       expect(test).to.be.an.object().and.to.contain(['failAction']);
       done();
     });
 
     it('should allow options to be chainable', function(done) {
-      const test = ErrorMessages().options();
+      const test = Relish().options();
       expect(test).to.be.an.object().and.to.contain(['failAction']);
       done();
     });

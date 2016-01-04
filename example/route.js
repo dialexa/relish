@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const Joi = require('joi');
-const ErrorMessages = require('../lib')();
+const Relish = require('../lib')();
 
 const server = new Hapi.Server();
 server.connection({
@@ -24,7 +24,7 @@ server.route({
         }).required(),
       },
       // call the module's failAction
-      failAction: ErrorMessages.options({
+      failAction: Relish.options({
         messages: {
           'timestamp': 'This request requires a timestamp',
           'email': 'Generic email message',

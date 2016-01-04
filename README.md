@@ -1,8 +1,8 @@
-# hapi-custom-error-messages
+# relish
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
 
-Better error messages for Hapi.js Joi validation
+_Better error messages for Hapi.js Joi validation_
 
 [Joi](https://github.com/hapijs/joi) provides awesome schema validation, but the error messages returned are not user-friendly. This package returns a more user-friendly version of Joi's default response and allows for custom error messages.
 
@@ -22,7 +22,7 @@ Better error messages for Hapi.js Joi validation
 }
 ```
 
-**Custom Error Messages Response**
+**Relish Response**
 ```json
 {
   "statusCode": 400,
@@ -52,7 +52,7 @@ Better error messages for Hapi.js Joi validation
 
 <!-- ## Installation
 ```sh
-npm install hapi-custom-error-messages --save
+npm install relish --save
 ``` -->
 
 ## Basic Usage
@@ -60,7 +60,7 @@ First load and initialize the module
 
 ```js
 // load the package and set custom message options
-const ErrorMessages = require('hapi-custom-error-messages')({
+const Relish = require('relish')({
   messages: {
     'data.name': 'Please enter your full name'
   }
@@ -77,7 +77,7 @@ server.route({
   config: {
     validate: {
       // set a custom failAction handler
-      failAction: ErrorMessages.failAction,
+      failAction: Relish.failAction,
       payload: {
         data: Joi.object({
           name: Joi.string().required(),
@@ -99,14 +99,14 @@ server.connection({
 
   routes: {
     validate: {
-      failAction: ErrorMessages.failAction
+      failAction: Relish.failAction
     }
   }
 });
 ```
 
 <!-- URLs -->
-[build-img]:https://travis-ci.org/dialexa/hapi-custom-error-messages.svg?branch=master
-[build-url]:https://travis-ci.org/dialexa/hapi-custom-error-messages
-[coverage-img]:https://coveralls.io/repos/dialexa/hapi-custom-error-messages/badge.svg?branch=master&service=github
-[coverage-url]:https://coveralls.io/github/dialexa/hapi-custom-error-messages?branch=master
+[build-img]:https://travis-ci.org/dialexa/relish.svg?branch=master
+[build-url]:https://travis-ci.org/dialexa/relish
+[coverage-img]:https://coveralls.io/repos/dialexa/relish/badge.svg?branch=master&service=github
+[coverage-url]:https://coveralls.io/github/dialexa/relish?branch=master

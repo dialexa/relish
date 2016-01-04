@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const Joi = require('joi');
-const ErrorMessages = require('../lib')({
+const Relish = require('../lib')({
   messages: {
     'timestamp': 'This request requires a timestamp',
     'email': 'Generic email message',
@@ -18,7 +18,7 @@ server.connection({
   routes: {
     validate: {
       // call the module's failAction
-      failAction: ErrorMessages.failAction,
+      failAction: Relish.failAction,
       options: {
         abortEarly: false,
       }

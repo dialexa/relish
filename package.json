@@ -1,7 +1,7 @@
 {
-  "name": "hapi-custom-error-messages",
+  "name": "relish",
   "version": "0.1.0",
-  "description": "Custom Error Messages for Hapi Routes",
+  "description": "Better Error Messages for Hapi Routes",
   "main": "lib/index.js",
   "scripts": {
     "test": "lab -r console -t 100 -a code",
@@ -20,13 +20,15 @@
     "hapi",
     "joi",
     "custom",
+    "better",
     "error",
     "message",
-    "validation"
+    "validation",
+    "relish"
   ],
-  "repository": "git@github.com:dialexa/hapi-custom-error-messages.git",
-  "homepage": "https://github.com/dialexa/hapi-custom-error-messages",
-  "bugs": "https://github.com/dialexa/hapi-custom-error-messages/issues",
+  "repository": "git@github.com:dialexa/relish.git",
+  "homepage": "https://github.com/dialexa/relish",
+  "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
     "boom": "~3.1.1",
     "hoek": "~3.0.4"
