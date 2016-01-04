@@ -1,15 +1,33 @@
-hapi-custom-error-messages
-==========================
-[![Build Status](https://travis-ci.org/dialexa/hapi-custom-error-messages.svg?branch=master)](https://travis-ci.org/dialexa/hapi-custom-error-messages)
+# hapi-custom-error-messages
+[![Build Status][build-img]][build-url]
+[![Coverage Status][coverage-img]][coverage-url]
 
-Custom Error Messages for Hapi.js Joi Validation
+Better error messages for Hapi.js Joi validation
 
-## Example Response
+[Joi](https://github.com/hapijs/joi) provides awesome schema validation, but the error messages returned are not user-friendly. This package returns a more user-friendly version of Joi's default response and allows for custom error messages.
+
+**Default Joi Response**
 ```json
 {
   "statusCode": 400,
   "error": "Bad Request",
-  "message": "Please enter a valid email, Please enter your full name",
+  "message": "child \"data\" fails because [child \"name\" fails because [\"name\" is not allowed to be empty], child \"email\" fails because [\"email\" must be a valid email]]",
+  "validation": {
+    "source": "payload",
+    "keys": [
+      "data.name",
+      "data.email"
+    ]
+  }
+}
+```
+
+**Custom Error Messages Response**
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "Please enter your full name, \"email\" must be a valid email",
   "validation": {
     "source": "payload",
     "errors": [
@@ -23,7 +41,7 @@ Custom Error Messages for Hapi.js Joi Validation
       {
         "key": "email",
         "path": "data.email",
-        "message": "Please enter a valid email",
+        "message": "\"email\" must be a valid email",
         "type": "string",
         "constraint": "email"
       }
@@ -32,54 +50,63 @@ Custom Error Messages for Hapi.js Joi Validation
 }
 ```
 
-## Usage
+<!-- ## Installation
+```sh
+npm install hapi-custom-error-messages --save
+``` -->
+
+## Basic Usage
+First load and initialize the module
 
 ```js
+// load the package and set custom message options
 const ErrorMessages = require('hapi-custom-error-messages')({
   messages: {
-    'email': 'Please enter a valid email',
     'data.name': 'Please enter your full name'
   }
 });
 ```
 
-### `.failAction` Helper
-This helper function can be used in place of a custom `failAction` in your Hapi.js [Route Options](http://hapijs.com/api#route-options)
+Once initialized, this package exposes a custom `failAction` handler that can be used in your Hapi.js [Route Options](http://hapijs.com/api#route-options).
 
-#### Global Usage
-This sets the `failAction` for **all routes**
 ```js
-server.connection({
-  port: 3000,
-  routes: {
-    validate: {
-      // use as a global failAction (applies to all routes)
-      failAction: ErrorMessages.failAction
-    }
-  }
-});
-```
-
-#### Individual Route
-This sets the `failAction` for **only this route**
-```js
+// call the failAction handler in your route options
 server.route({
   method: 'POST',
   path: '/',
   config: {
     validate: {
+      // set a custom failAction handler
+      failAction: ErrorMessages.failAction,
       payload: {
         data: Joi.object({
-          email: Joi.string().email(),
-          name: Joi.string().required()
+          name: Joi.string().required(),
+          email: Joi.string().email()
         })
-      },
-      // use as your server route's failAction
-      failAction: ErrorMessages.failAction
+      }
     }
   },
   handler: (request, reply) => reply()
 });
 ```
 
-_See examples directory for more examples._
+#### Global Usage (alternative)
+You can apply this module to all routes by setting the failAction in your server connection options.
+
+```js
+server.connection({
+  // ... other connection options
+
+  routes: {
+    validate: {
+      failAction: ErrorMessages.failAction
+    }
+  }
+});
+```
+
+<!-- URLs -->
+[build-img]:https://travis-ci.org/dialexa/hapi-custom-error-messages.svg?branch=master
+[build-url]:https://travis-ci.org/dialexa/hapi-custom-error-messages
+[coverage-img]:https://coveralls.io/repos/dialexa/hapi-custom-error-messages/badge.svg?branch=master&service=github
+[coverage-url]:https://coveralls.io/github/dialexa/hapi-custom-error-messages?branch=master
