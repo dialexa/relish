@@ -14,7 +14,7 @@ Code or documentation changes are welcome and should follow the guidelines below
 
 * [Fork this repository][working-with-forks] and create a new branch for your changes
 * Make your changes and don't be afraid to ask questions!
-* If making code changes, don't forget to **add tests** and **lint** your new code ensuring it follows the [JavaScript Style Standard][standardjs-rules]
+* If making code changes, don't forget to **add tests** and **lint** your new code ensuring it follows the [JS Standard][js-standard-rules] code style
   * Run `npm run lint` to lint your code
   * Run `npm test` to execute tests and report code coverage
   * _Yes, we require 100% code coverage for all Pull Requests_
@@ -27,4 +27,4 @@ Code or documentation changes are welcome and should follow the guidelines below
 [new-pull-request]:https://github.com/dialexa/relish/pull/new/master
 [help-wanted]:https://github.com/dialexa/relish/labels/help%20wanted
 [working-with-forks]:http://help.github.com/articles/working-with-forks/
-[standardjs-rules]:http://standardjs.com/rules.html
+[js-standard-rules]:http://standardjs.com/rules.html

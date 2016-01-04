@@ -3,6 +3,8 @@
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
 
+[![Code Style][style-img]][style-url]
+
 _Better error messages for Hapi.js Joi validation_
 
 [Joi](https://github.com/hapijs/joi) provides awesome schema validation, but the error messages returned are not user-friendly. This package returns a more user-friendly version of Joi's default response and allows for custom error messages.
@@ -113,3 +115,5 @@ server.connection({
 [coverage-url]:https://coveralls.io/github/dialexa/relish?branch=master
 [version-img]:https://badge.fury.io/js/relish.svg
 [version-url]:https://badge.fury.io/js/relish
+[style-img]:https://cdn.rawgit.com/feross/standard/master/badge.svg
+[style-url]:http://standardjs.com/
