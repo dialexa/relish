@@ -1,4 +1,5 @@
 # relish
+[![NPM Version][version-img]][version-url]
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
 
@@ -105,8 +106,10 @@ server.connection({
 });
 ```
 
-<!-- URLs -->
+<!-- Badge URLs -->
 [build-img]:https://travis-ci.org/dialexa/relish.svg?branch=master
 [build-url]:https://travis-ci.org/dialexa/relish
 [coverage-img]:https://coveralls.io/repos/dialexa/relish/badge.svg?branch=master&service=github
 [coverage-url]:https://coveralls.io/github/dialexa/relish?branch=master
+[version-img]:https://badge.fury.io/js/relish.svg
+[version-url]:https://badge.fury.io/js/relish
