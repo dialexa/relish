@@ -12,16 +12,19 @@ Lastly, please indicate if your issue is a **feature request** or **bug**.
 ## Making Changes
 Code or documentation changes are welcome and should follow the guidelines below.
 
-* Fork the repository on GitHub
-* Make your changes to a new branch in your fork
-* If making code changes, add tests for your new code ensuring that you have 100% code coverage
-  * Run `npm test` to generate a report of test coverage
-  * _We can help you reach 100% but will not merge without it_
-* Once finished, submit a [Pull Request][pull-request-guide] for your changes
+* [Fork this repository][working-with-forks] and create a new branch for your changes
+* Make your changes and don't be afraid to ask questions!
+* If making code changes, don't forget to **add tests** and **lint** your new code ensuring it follows the [JavaScript Style Standard][standardjs-rules]
+  * Run `npm run lint` to lint your code
+  * Run `npm test` to execute tests and report code coverage
+  * _Yes, we require 100% code coverage for all Pull Requests_
+* Once finished, [submit a Pull Request][new-pull-request] for your changes
   * All Pull Requests should be made to the `master` branch
-  * Make sure your branch is up to date with `master` (if not, perform a downstream merge and resolve any merge conflicts)
+  * Make sure your branch is up to date with the upstream repository (if not, perform a downstream merge and resolve any merge conflicts)
 
 <!-- URLs -->
 [new-issue]:https://github.com/dialexa/relish/issues/new
+[new-pull-request]:https://github.com/dialexa/relish/pull/new/master
 [help-wanted]:https://github.com/dialexa/relish/labels/help%20wanted
-[pull-request-guide]:http://help.github.com/send-pull-requests/
+[working-with-forks]:http://help.github.com/articles/working-with-forks/
+[standardjs-rules]:http://standardjs.com/rules.html

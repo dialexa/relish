@@ -4,6 +4,7 @@
   "description": "Better Error Messages for Hapi.js Joi validation_",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "standard",
     "test": "standard && lab -r console -t 100 -a code",
     "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html"
