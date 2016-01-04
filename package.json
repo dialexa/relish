@@ -4,8 +4,9 @@
   "description": "Better Error Messages for Hapi.js Joi validation_",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -r console -t 100 -a code",
-    "test-ci": "lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
+    "lint": "standard --verbose | snazzy",
+    "test": "npm run lint && lab -r console -t 100 -a code",
+    "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
@@ -19,25 +20,28 @@
   "keywords": [
     "hapi",
     "joi",
-    "custom",
-    "better",
     "error",
     "message",
+    "error message",
     "validation",
+    "custom error message",
+    "better error message",
     "relish"
   ],
   "repository": "git@github.com:dialexa/relish.git",
   "homepage": "https://github.com/dialexa/relish",
   "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
-    "boom": "~3.1.1",
     "hoek": "~3.0.4"
   },
   "devDependencies": {
+    "boom": "~3.1.1",
     "code": "~2.1.0",
     "coveralls": "~2.11.6",
-    "hapi": "~11.1.4",
+    "hapi": "~12.0.0",
     "joi": "~7.1.0",
-    "lab": "~8.0.1"
+    "lab": "~8.0.1",
+    "snazzy": "~2.0.1",
+    "standard": "~5.4.1"
   }
 }
