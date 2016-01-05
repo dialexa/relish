@@ -14,7 +14,7 @@ Code or documentation changes are welcome and should follow the guidelines below
 
 * [Fork this repository][working-with-forks] and create a new branch for your changes
 * Make your changes and don't be afraid to ask questions!
-* If making code changes, don't forget to **add tests** and **lint** your new code ensuring it follows the [JS Standard][js-standard-rules] code style
+* If making code changes, don't forget to **add tests** and **lint** your new code following the [JS Standard][js-standard-rules] code style
   * Run `npm run lint` to lint your code
   * Run `npm test` to execute tests and report code coverage
   * _Yes, we require 100% code coverage for all Pull Requests_
