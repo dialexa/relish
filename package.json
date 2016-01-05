@@ -1,7 +1,7 @@
 {
   "name": "relish",
   "version": "0.1.2",
-  "description": "Better Error Messages for Hapi.js Joi validation_",
+  "description": "Better error messages for Hapi.js Joi validation",
   "main": "lib/index.js",
   "scripts": {
     "lint": "standard --verbose | snazzy",
