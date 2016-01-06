@@ -1,4 +1,5 @@
 # relish
+
 [![NPM Version][version-img]][version-url]
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
@@ -27,7 +28,7 @@ _Better error messages for Hapi.js Joi validation_
 }
 ```
 
-**Relish Response**
+**Example Relish Response**
 ```json
 {
   "statusCode": 400,
@@ -60,7 +61,7 @@ _Better error messages for Hapi.js Joi validation_
 npm install relish --save
 ```
 
-## Basic Usage
+## Usage
 First load and initialize the module
 
 ```js
@@ -72,7 +73,7 @@ const Relish = require('relish')({
 });
 ```
 
-Once initialized, this package exposes a custom `failAction` handler that can be used in your Hapi.js [Route Options](http://hapijs.com/api#route-options).
+Once initialized, this package exposes a custom `failAction` handler that can be used in your Hapi.js [Route Options][hapi-route-options].
 
 ```js
 // call the failAction handler in your route options
@@ -110,6 +111,9 @@ server.connection({
 });
 ```
 
+## API Documentation
+See the [API Documentation](API.md) for reference.
+
 <!-- Badge URLs -->
 [build-img]:https://travis-ci.org/dialexa/relish.svg?branch=master
 [build-url]:https://travis-ci.org/dialexa/relish
@@ -123,3 +127,4 @@ server.connection({
 [dev-dependency-url]:https://david-dm.org/dialexa/relish#info=devDependencies
 [style-img]:https://cdn.rawgit.com/feross/standard/master/badge.svg
 [style-url]:http://standardjs.com/
+[hapi-route-options]:http://hapijs.com/api#route-options
