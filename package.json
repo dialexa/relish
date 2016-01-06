@@ -28,6 +28,8 @@
     "validation",
     "custom error message",
     "better error message",
+    "joi custom error message",
+    "joi error messages",
     "relish"
   ],
   "repository": "git@github.com:dialexa/relish.git",
