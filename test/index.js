@@ -85,6 +85,16 @@ after(function (done) {
 })
 
 describe('Error Messages', function () {
+  describe('API', function () {
+    it('should expose public functions', function (done) {
+      const test = Relish()
+      expect(test).to.be.an.object().and.to.contain(['failAction', 'options'])
+      expect(test.failAction).to.be.a.function()
+      expect(test.options).to.be.a.function()
+      done()
+    })
+  })
+
   describe('Options', function () {
     it('should not be required', function (done) {
       const test = Relish()
