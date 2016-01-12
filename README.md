@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/dialexa/relish.png?label=ready&title=Ready)](https://waffle.io/dialexa/relish)
 # relish
 
 [![NPM Version][version-img]][version-url]
