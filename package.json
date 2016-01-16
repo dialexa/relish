@@ -1,6 +1,6 @@
 {
   "name": "relish",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Better error messages for Hapi.js Joi validation",
   "main": "lib/index.js",
   "scripts": {
