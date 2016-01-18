@@ -30,5 +30,5 @@ const api = Toc.insert(internals.api.contents, tocOptions)
 Fs.writeFileSync(internals.api.filename, api)
 
 // create absolute URL for versioned docs
-const readme = internals.readme.contents.replace(/\[API Documentation\]\(.*\)/g, `[API Documentation](${Package.homepage || ''}/blob/v${Package.version}/${internals.api.filename})`)
+const readme = internals.readme.contents.replace(/\[API Documentation\]\(.*\)/g, `[API Documentation](${Package.homepage || ''}/blob/v${Package.version}/${internals.api.filename.substr(2)})`)
 Fs.writeFileSync(internals.readme.filename, readme)
