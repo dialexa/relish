@@ -4,7 +4,6 @@
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
 [![Dependency Status][dependency-img]][dependency-url]
-[![Dev Dependency Status][dev-dependency-img]][dev-dependency-url]
 
 [![Code Style][style-img]][style-url]
 
@@ -121,10 +120,8 @@ See the [API Documentation](https://github.com/dialexa/relish/blob/v0.1.4/./API.
 [coverage-url]:https://coveralls.io/github/dialexa/relish?branch=master
 [version-img]:https://badge.fury.io/js/relish.svg
 [version-url]:https://badge.fury.io/js/relish
-[dependency-img]:https://david-dm.org/dialexa/relish.svg
-[dependency-url]:https://david-dm.org/dialexa/relish
-[dev-dependency-img]:https://david-dm.org/dialexa/relish/dev-status.svg
-[dev-dependency-url]:https://david-dm.org/dialexa/relish#info=devDependencies
+[dependency-img]:https://gemnasium.com/dialexa/relish.svg
+[dependency-url]:https://gemnasium.com/dialexa/relish
 [style-img]:https://cdn.rawgit.com/feross/standard/master/badge.svg
 [style-url]:http://standardjs.com/
 [hapi-route-options]:http://hapijs.com/api#route-options
