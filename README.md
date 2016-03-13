@@ -32,14 +32,14 @@ _Better error messages for Hapi.js Joi validation_
 {
   "statusCode": 400,
   "error": "Bad Request",
-  "message": "Please enter your full name, \"email\" must be a valid email",
+  "message": "\"name\" is not allowed to be empty, \"email\" must be a valid email",
   "validation": {
     "source": "payload",
     "errors": [
       {
         "key": "name",
         "path": "data.name",
-        "message": "Please enter your full name",
+        "message": "\"name\" is not allowed to be empty",
         "type": "any",
         "constraint": "required"
       },
