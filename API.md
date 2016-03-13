@@ -24,15 +24,15 @@ The Relish constructor and `.options` helper accept an optional `opts` configura
 
 **Examples**
 ```javascript
-let Relish = require('relish')
-
-Relish = Relish({
+const Relish = require('relish')({
   stripQuotes: true, // affects default Joi messages only
   messages: {
     'email': 'A generic email key message',
     'data.customer.email': 'A path-specific error message'
   }
 })
+
+const failAction = Relish.failAction
 ```
 ```javascript
 const Relish = require('relish')({ stripQuotes: true })
