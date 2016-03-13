@@ -39,14 +39,14 @@
     "hoek": "~3.0.4"
   },
   "devDependencies": {
-    "boom": "~3.1.1",
+    "boom": "~3.1.2",
     "code": "~2.1.0",
-    "coveralls": "~2.11.6",
-    "hapi": "~12.0.0",
-    "joi": "~7.1.0",
-    "lab": "~8.0.1",
+    "coveralls": "~2.11.8",
+    "hapi": "~13.2.1",
+    "joi": "~8.0.4",
+    "lab": "~10.2.0",
     "markdown-toc": "~0.12.3",
-    "snazzy": "~2.0.1",
-    "standard": "~5.4.1"
+    "snazzy": "~3.0.0",
+    "standard": "~6.0.8"
   }
 }
