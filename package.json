@@ -9,7 +9,8 @@
     "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html",
     "generate-docs": "node generate-docs.js",
-    "version": "npm run generate-docs && git add README.md API.md"
+    "version": "npm run generate-docs && git add README.md API.md",
+    "postversion": "git push && git push --tags"
   },
   "engines": {
     "node": ">= 4.0.0"
