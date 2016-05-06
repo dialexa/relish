@@ -40,7 +40,6 @@
     "hoek": "~4.0.0"
   },
   "devDependencies": {
-    "boom": "~3.1.2",
     "code": "~2.2.1",
     "coveralls": "~2.11.8",
     "hapi": "~13.3.0",
