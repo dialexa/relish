@@ -111,7 +111,7 @@ server.connection({
 ```
 
 ## API Documentation
-See the [API Documentation](https://github.com/dialexa/relish/blob/v0.2.0/API.md) for reference.
+See the [API Documentation](https://github.com/dialexa/relish/blob/v0.2.1/API.md) for reference.
 
 <!-- Badge URLs -->
 [build-img]:https://travis-ci.org/dialexa/relish.svg?branch=master
