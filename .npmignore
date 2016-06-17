@@ -1,3 +1,5 @@
 test
 example
 .travis.yml
+generage-docs.js
+coverage.html

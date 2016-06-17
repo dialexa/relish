@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi')
 const Joi = require('joi')
-const Relish = require('../lib')()
+const Relish = require('../')()
 
 const server = new Hapi.Server()
 server.connection({

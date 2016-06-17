@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi')
 const Joi = require('joi')
-const Relish = require('../lib')
+const Relish = require('../')
 
 const Code = require('code')
 const Lab = require('lab')
