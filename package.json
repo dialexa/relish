@@ -2,7 +2,7 @@
   "name": "relish",
   "version": "0.2.1",
   "description": "Better error messages for Hapi.js Joi validation",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && lab -r console -t 100 -a code",
@@ -37,16 +37,16 @@
   "homepage": "https://github.com/dialexa/relish",
   "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
-    "hoek": "~4.0.0"
+    "hoek": "~4.0.1"
   },
   "devDependencies": {
-    "code": "~2.3.0",
+    "code": "~3.0.1",
     "coveralls": "~2.11.9",
-    "hapi": "~13.4.0",
-    "joi": "~8.1.0",
-    "lab": "~10.5.1",
-    "markdown-toc": "~0.12.6",
+    "hapi": "~13.4.1",
+    "joi": "~8.4.2",
+    "lab": "~10.8.2",
+    "markdown-toc": "~0.12.12",
     "snazzy": "~4.0.0",
-    "standard": "~7.0.1"
+    "standard": "~7.1.2"
   }
 }
