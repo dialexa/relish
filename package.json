@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard --verbose | snazzy",
-    "test": "npm run lint && lab -r console -t 100 -a code",
+    "test": "npm run lint && lab -r console -v -t 100 -a code",
     "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html",
     "generate-docs": "node generate-docs.js",
