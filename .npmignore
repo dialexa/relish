@@ -3,3 +3,4 @@ example
 .travis.yml
 generate-docs.js
 coverage.html
+images
