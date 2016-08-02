@@ -37,15 +37,15 @@
   "homepage": "https://github.com/dialexa/relish",
   "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
-    "hoek": "~4.0.1"
+    "hoek": "~4.0.2"
   },
   "devDependencies": {
-    "code": "~3.0.1",
-    "coveralls": "~2.11.9",
-    "hapi": "~13.4.1",
-    "joi": "~8.4.2",
-    "lab": "~10.8.2",
-    "markdown-toc": "~0.12.12",
+    "code": "~3.0.2",
+    "coveralls": "~2.11.12",
+    "hapi": "~14.1.0",
+    "joi": "~9.0.4",
+    "lab": "~10.9.0",
+    "markdown-toc": "~0.12.16",
     "snazzy": "~4.0.0",
     "standard": "~7.1.2"
   }
