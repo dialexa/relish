@@ -28,11 +28,27 @@ const Relish = function Relish (opts) {
         err.label = i.context.key
       }
 
+      /**
+       * This function allows you to write more specific messages.
+       */
+
+      const evenBetterErrorMessages = (messages) => {
+        let result = this._opts.messages[messages]
+
+        if (typeof result === 'object') {
+          result = result[err.constraint]
+        }
+
+        let limit = i.context.limit
+
+        return (i.context.limit ? result.replace('{limit}', limit) : result)
+      }
+
       // set custom message (if exists)
       if (this._opts.messages.hasOwnProperty(err.path)) {
-        err.message = this._opts.messages[err.path]
+        err.message = evenBetterErrorMessages(err.path)
       } else if (this._opts.messages.hasOwnProperty(err.key)) {
-        err.message = this._opts.messages[err.key]
+        err.message = evenBetterErrorMessages(err.key)
       }
 
       return err
