@@ -16,7 +16,7 @@ const Relish = function Relish (opts) {
   this.parseError = (error) => {
     return error.data.details.map((i) => {
       let err = {
-        key: i.path.split('.').pop(),
+        key: Array.isArray(i.path) ? i.path.slice(0).pop() : i.path.split('.').pop(),
         path: i.path,
         message: this._opts.stripQuotes ? i.message.replace(/"/g, '') : i.message,
         type: i.type.split('.').shift(),
