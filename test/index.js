@@ -34,7 +34,7 @@ const customMessages = {
 // set up server and test routes
 let server
 
-before(function (done) {
+before(async () => {
   server = new Hapi.Server().connection({
     routes: {
       validate: {
@@ -76,92 +76,103 @@ before(function (done) {
     },
     handler: (request, reply) => reply()
   }])
-  done()
 })
 
-after(function (done) {
+after(() => {
   if (typeof server.stop === 'function') server.stop()
-  done()
 })
 
-describe('Error Messages', function () {
-  describe('API', function () {
-    it('should expose public functions', function (done) {
+describe('Relish Error Messages', () => {
+  describe('Module API', () => {
+    it('should expose public functions', () => {
       const test = Relish()
       expect(test).to.be.an.object().and.to.contain(['failAction', 'options'])
       expect(test.failAction).to.be.a.function()
       expect(test.options).to.be.a.function()
-      done()
+    })
+
+    it('should not require options', () => {
+      const test = Relish()
+      expect(test).to.be.an.object().and.to.contain(['failAction'])
+    })
+
+    it('should accept options in the constructor', () => {
+      const test = Relish({ stripQuotes: true, messages: customMessages })
+      expect(test).to.be.an.object().and.to.contain(['failAction'])
+    })
+
+    it('should allow options to be chainable', () => {
+      const test = Relish().options({ stripQuotes: true })
+      expect(test).to.be.an.object().and.to.contain(['failAction'])
     })
   })
 
-  describe('Options', function () {
-    it('should not be required', function (done) {
-      const test = Relish()
-      expect(test).to.be.an.object().and.to.contain(['failAction'])
-      done()
-    })
+  describe('Hapi Route', () => {
+    describe('Options', () => {
+      it('should not strip quotes by default', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/no-options',
+          payload: {}
+        })
 
-    it('should accept options in the constructor', function (done) {
-      const test = Relish({ stripQuotes: true, messages: customMessages })
-      expect(test).to.be.an.object().and.to.contain(['failAction'])
-      done()
-    })
-
-    it('should allow options to be chainable', function (done) {
-      const test = Relish().options()
-      expect(test).to.be.an.object().and.to.contain(['failAction'])
-      done()
-    })
-
-    it('should not strip quotes by default', function (done) {
-      server.inject({ method: 'POST', url: path + '/no-options', payload: {} }, (res) => {
         res.result.validation.errors.map((error) => {
           expect(error.message).to.contain(['"'])
         })
-        done()
       })
-    })
 
-    it('should strip quotes when stripQuotes option is true', function (done) {
-      server.inject({ method: 'POST', url: path + '/no-quotes', payload: {} }, (res) => {
+      it('should strip quotes when stripQuotes option is true', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/no-quotes',
+          payload: {}
+        })
+
         res.result.validation.errors.map((error) => {
           expect(error.message).to.not.contain(['"'])
         })
-        done()
       })
     })
-  })
 
-  describe('Response', function () {
-    it('should return a proper error response object when no options are passed', function (done) {
-      server.inject({ method: 'POST', url: path + '/no-options', payload: {} }, (res) => {
+    describe('Response', () => {
+      it('should return a proper error response object when no options are passed', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/no-options',
+          payload: {}
+        })
+
         expect(res.result).to.be.an.object()
         expect(res.result.validation).to.exist().and.to.be.an.object()
         expect(res.result.validation.errors).to.exist().and.to.be.an.array().and.to.not.be.empty()
+
         res.result.validation.errors.map((error) => {
           expect(error).to.be.an.object()
           expect(Object.keys(error)).to.contain(['message', 'key', 'path', 'type', 'constraint'])
         })
-        done()
       })
-    })
 
-    it('should return prettier Joi messages when no custom messages are passed', function (done) {
-      server.inject({ method: 'POST', url: path + '/no-options', payload: {} }, (res) => {
+      it('should return prettier Joi messages when no custom messages are passed', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/no-options',
+          payload: {}
+        })
+
         res.result.validation.errors.map((error) => {
           expect(error.message).to.not.contain(['child', 'because of'])
         })
-        done()
       })
-    })
 
-    it('should return custom error message for a generic key match', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
-        payload: {
-          data: { email: 'some bad email' }
-        }
-      }, (res) => {
+      it('should return custom error message for a generic key match', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/messages',
+          payload: {
+            data: { email: 'some bad email' }
+          }
+        })
+
         let passed = false
 
         res.result.validation.errors.map((error) => {
@@ -172,16 +183,17 @@ describe('Error Messages', function () {
         })
 
         expect(passed).to.be.true()
-        done()
       })
-    })
 
-    it('should return custom error message for a exact path match', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
-        payload: {
-          data: { phone: 'this is not a phone number' }
-        }
-      }, (res) => {
+      it('should return custom error message for a exact path match', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/messages',
+          payload: {
+            data: { phone: 'this is not a phone number' }
+          }
+        })
+
         let passed = false
 
         res.result.validation.errors.map((error) => {
@@ -192,16 +204,17 @@ describe('Error Messages', function () {
         })
 
         expect(passed).to.be.true()
-        done()
       })
-    })
 
-    it('should include `label` when setting custom Joi label', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
-        payload: {
-          data: { name: '' }
-        }
-      }, (res) => {
+      it('should include `label` when setting custom Joi label', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/messages',
+          payload: {
+            data: { name: '' }
+          }
+        })
+
         let passed = false
 
         res.result.validation.errors.map((error) => {
@@ -213,7 +226,6 @@ describe('Error Messages', function () {
         })
 
         expect(passed).to.be.true()
-        done()
       })
     })
   })
