@@ -42,7 +42,7 @@
   "devDependencies": {
     "code": "~5.1.2",
     "coveralls": "~3.0.0",
-    "hapi": "16.6.0",
+    "hapi": "^16.6.1",
     "joi": "~13.1.1",
     "lab": "~15.2.0",
     "markdown-toc": "~1.2.0",

@@ -7,10 +7,7 @@ const Relish = require('../')
 const Code = require('code')
 const Lab = require('lab')
 const lab = exports.lab = Lab.script()
-const describe = lab.describe
-const it = lab.it
-const before = lab.before
-const after = lab.after
+const { after, before, describe, it } = lab
 const expect = Code.expect
 
 const path = '/test'
@@ -28,7 +25,7 @@ const customMessages = {
   'email': 'Generic email message',
   'data': 'You must include a data object in your payload',
   'data.name': 'Please give us your name',
-  'data.phone': 'Please give us your name'
+  'data.phone': 'Please give us your phone'
 }
 
 // set up server and test routes
@@ -45,37 +42,41 @@ before(async () => {
     }
   })
 
-  server.route([{
-    method: 'POST',
-    path: path + '/no-options',
-    config: {
-      validate: {
-        payload: payload,
-        failAction: Relish().failAction
-      }
+  server.route([
+    {
+      method: 'POST',
+      path: path + '/no-options',
+      config: {
+        validate: {
+          payload: payload,
+          failAction: Relish().failAction
+        }
+      },
+      handler: (request, reply) => reply()
     },
-    handler: (request, reply) => reply()
-  }, {
-    method: 'POST',
-    path: path + '/no-quotes',
-    config: {
-      validate: {
-        payload: payload,
-        failAction: Relish().options({ stripQuotes: true }).failAction
-      }
+    {
+      method: 'POST',
+      path: path + '/no-quotes',
+      config: {
+        validate: {
+          payload: payload,
+          failAction: Relish().options({ stripQuotes: true }).failAction
+        }
+      },
+      handler: (request, reply) => reply()
     },
-    handler: (request, reply) => reply()
-  }, {
-    method: 'POST',
-    path: path + '/messages',
-    config: {
-      validate: {
-        payload: payload,
-        failAction: Relish().options({ messages: customMessages }).failAction
-      }
-    },
-    handler: (request, reply) => reply()
-  }])
+    {
+      method: 'POST',
+      path: path + '/messages',
+      config: {
+        validate: {
+          payload: payload,
+          failAction: Relish().options({ messages: customMessages }).failAction
+        }
+      },
+      handler: (request, reply) => reply()
+    }
+  ])
 })
 
 after(() => {
@@ -110,25 +111,25 @@ describe('Relish Error Messages', () => {
   describe('Hapi Route', () => {
     describe('Options', () => {
       it('should not strip quotes by default', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/no-options',
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           expect(error.message).to.contain(['"'])
         })
       })
 
       it('should strip quotes when stripQuotes option is true', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/no-quotes',
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           expect(error.message).to.not.contain(['"'])
         })
       })
@@ -136,47 +137,47 @@ describe('Relish Error Messages', () => {
 
     describe('Response', () => {
       it('should return a proper error response object when no options are passed', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/no-options',
           payload: {}
         })
 
-        expect(res.result).to.be.an.object()
-        expect(res.result.validation).to.exist().and.to.be.an.object()
-        expect(res.result.validation.errors).to.exist().and.to.be.an.array().and.to.not.be.empty()
+        expect(result).to.be.an.object()
+        expect(result.validation).to.exist().and.to.be.an.object()
+        expect(result.validation.details).to.exist().and.to.be.an.array().and.to.not.be.empty()
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           expect(error).to.be.an.object()
-          expect(Object.keys(error)).to.contain(['message', 'key', 'path', 'type', 'constraint'])
+          expect(Object.keys(error)).to.contain(['message', 'path', 'type', 'context'])
+          expect(error.context).to.be.an.object()
         })
       })
 
       it('should return prettier Joi messages when no custom messages are passed', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/no-options',
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           expect(error.message).to.not.contain(['child', 'because of'])
         })
       })
 
       it('should return custom error message for a generic key match', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/messages',
           payload: {
             data: { email: 'some bad email' }
           }
         })
-
         let passed = false
 
-        res.result.validation.errors.map((error) => {
-          if (error.key === 'email') {
+        result.validation.details.map((error) => {
+          if (error.context.key === 'email') {
             passed = true
             expect(error.message).to.equal(customMessages.email)
           }
@@ -186,7 +187,7 @@ describe('Relish Error Messages', () => {
       })
 
       it('should return custom error message for a exact path match', async () => {
-        const res = await server.inject({
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/messages',
           payload: {
@@ -196,7 +197,7 @@ describe('Relish Error Messages', () => {
 
         let passed = false
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           if (error.path === 'data.phone') {
             passed = true
             expect(error.message).to.equal(customMessages[error.path])
@@ -206,8 +207,8 @@ describe('Relish Error Messages', () => {
         expect(passed).to.be.true()
       })
 
-      it('should include `label` when setting custom Joi label', async () => {
-        const res = await server.inject({
+      it('should include custom Joi label when set', async () => {
+        const { result } = await server.inject({
           method: 'POST',
           url: path + '/messages',
           payload: {
@@ -217,11 +218,11 @@ describe('Relish Error Messages', () => {
 
         let passed = false
 
-        res.result.validation.errors.map((error) => {
+        result.validation.details.map((error) => {
           if (error.path === 'data.name') {
             passed = true
-            expect(error.hasOwnProperty('label')).to.be.true()
-            expect(error.label).to.equal('Full Name')
+            expect(error.context.hasOwnProperty('label')).to.be.true()
+            expect(error.context.label).to.equal('Full Name')
           }
         })
 
