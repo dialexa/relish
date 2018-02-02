@@ -16,16 +16,16 @@ const Relish = function Relish (opts) {
   this.parseError = (error) => {
     return error.data.details.map((i) => {
       let err = {
-        key: i.path.split('.').pop(),
-        path: i.path,
+        key: i.context.key,
+        path: i.path.join('.'),
         message: this._opts.stripQuotes ? i.message.replace(/"/g, '') : i.message,
         type: i.type.split('.').shift(),
         constraint: i.type.split('.').pop()
       }
 
       // if label is different than key, provide label
-      if (i.context.key !== err.key) {
-        err.label = i.context.key
+      if (i.context.label !== err.key) {
+        err.label = i.context.label
       }
 
       // set custom message (if exists)
