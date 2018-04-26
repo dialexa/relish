@@ -13,7 +13,7 @@
     "postversion": "git push && git push --tags"
   },
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 6.0.0"
   },
   "author": "Dialexa",
   "contributors": [
