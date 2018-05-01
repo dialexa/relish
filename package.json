@@ -15,6 +15,10 @@
   "engines": {
     "node": ">= 6.0.0"
   },
+  "peerDependencies": {
+    "hapi": ">= 16.6.1 < 17",
+    "joi": ">= 11"
+  },
   "author": "Dialexa",
   "contributors": [
     "Andrew Turner <andrew@dialexa.com>"
@@ -42,15 +46,11 @@
   "devDependencies": {
     "code": "~3.0.2",
     "coveralls": "~2.11.12",
-    "hapi": "16.6.0",
-    "joi": "~10.6.0",
+    "hapi": "~16.6.2",
+    "joi": "~13.1.1",
     "lab": "~10.9.0",
     "markdown-toc": "~0.12.16",
     "snazzy": "~4.0.0",
     "standard": "~7.1.2"
-  },
-  "peerDependencies": {
-    "hapi": "<= 16.6.0",
-    "joi": "< 11"
   }
 }
