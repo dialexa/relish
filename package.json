@@ -42,7 +42,7 @@
   "devDependencies": {
     "code": "~3.0.2",
     "coveralls": "~2.11.12",
-    "hapi": "~14.1.0",
+    "hapi": "~17.0.0",
     "joi": "~9.0.4",
     "lab": "~10.9.0",
     "markdown-toc": "~0.12.16",
@@ -50,7 +50,6 @@
     "standard": "~7.1.2"
   },
   "peerDependencies": {
-    "hapi": "<= 16.6.0",
-    "joi": "< 11"
+    "hapi": "<= 17.0.0"
   }
 }
