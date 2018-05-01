@@ -1,5 +1,5 @@
 <!-- version -->
-API Documentation - `v1.0.0`
+API Documentation - `v1.0.1`
 ---
 <!-- versionstop -->
 
