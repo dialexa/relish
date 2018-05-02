@@ -157,7 +157,8 @@ describe('Error Messages', function () {
     })
 
     it('should return custom error message for a generic key match', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
+      server.inject({ method: 'POST',
+        url: path + '/messages',
         payload: {
           data: { email: 'some bad email' }
         }
@@ -177,7 +178,8 @@ describe('Error Messages', function () {
     })
 
     it('should return custom error message for a exact path match', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
+      server.inject({ method: 'POST',
+        url: path + '/messages',
         payload: {
           data: { phone: 'this is not a phone number' }
         }
@@ -197,7 +199,8 @@ describe('Error Messages', function () {
     })
 
     it('should include `label` when setting custom Joi label', function (done) {
-      server.inject({ method: 'POST', url: path + '/messages',
+      server.inject({ method: 'POST',
+        url: path + '/messages',
         payload: {
           data: { name: '' }
         }

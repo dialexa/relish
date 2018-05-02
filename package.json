@@ -44,13 +44,13 @@
     "hoek": "~5.0.3"
   },
   "devDependencies": {
-    "code": "~3.0.2",
-    "coveralls": "~2.11.12",
+    "code": "~5.2.0",
+    "coveralls": "~3.0.1",
     "hapi": "~16.6.2",
-    "joi": "~13.1.1",
+    "joi": "~13.2.0",
     "lab": "~10.9.0",
-    "markdown-toc": "~0.12.16",
-    "snazzy": "~4.0.0",
-    "standard": "~7.1.2"
+    "markdown-toc": "~1.2.0",
+    "snazzy": "~7.1.1",
+    "standard": "~11.0.1"
   }
 }
