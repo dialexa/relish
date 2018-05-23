@@ -5,7 +5,6 @@ _Better error messages for Hapi.js Joi validation_
 [![NPM Version][version-img]][version-url]
 [![Build Status][build-img]][build-url]
 [![Coverage Status][coverage-img]][coverage-url]
-[![Dependency Status][dependency-img]][dependency-url]
 
 [![Code Style][style-img]][style-url]
 
@@ -123,8 +122,6 @@ See the [API Documentation](https://github.com/dialexa/relish/blob/v2.1.0/API.md
 [coverage-url]:https://coveralls.io/github/dialexa/relish?branch=master
 [version-img]:https://badge.fury.io/js/relish.svg
 [version-url]:https://badge.fury.io/js/relish
-[dependency-img]:https://gemnasium.com/dialexa/relish.svg
-[dependency-url]:https://gemnasium.com/dialexa/relish
 [style-img]:https://cdn.rawgit.com/feross/standard/master/badge.svg
 [style-url]:http://standardjs.com/
 [hapi-route-options]:http://hapijs.com/api#route-options
