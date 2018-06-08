@@ -13,7 +13,7 @@
     "postversion": "git push && git push --tags"
   },
   "engines": {
-    "node": ">= 7.0.0"
+    "node": ">= 8.9.0"
   },
   "peerDependencies": {
     "hapi": ">= 17",
