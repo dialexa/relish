@@ -14,7 +14,7 @@ const Relish = function Relish (opts) {
   this._opts = opts ? Hoek.applyToDefaults(internals.defaults, opts) : internals.defaults
 
   this.parseError = (error) => {
-    return error.data.details.map((i) => {
+    return error.details.map((i) => {
       let err = {
         key: i.context.key,
         path: i.path.join('.'),
@@ -56,17 +56,20 @@ const Relish = function Relish (opts) {
     return this.exports
   }
 
-  this.exports.failAction = (request, reply, source, error) => {
+  // this.exports.failAction = (request, reply, source, error) => {
+  this.exports.failAction = (request, h, err) => {
     // parse error object
-    const errors = this.parseError(error)
+    const errors = this.parseError(err)
 
     // build main error message
     const errorMessage = errors.map((e) => e.message).join(', ')
 
-    // format error response
-    error = this.formatResponse(error, source, errorMessage, errors)
+    const source = err.output.payload.validation.source
 
-    return reply(error)
+    // format error response
+    err = this.formatResponse(err, source, errorMessage, errors)
+
+    return err
   }
 
   return this.exports

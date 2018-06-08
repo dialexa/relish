@@ -37,7 +37,7 @@ const customMessages = {
 let server
 
 before(async () => {
-  server = new Hapi.Server().connection({
+  server = new Hapi.Server({
     routes: {
       validate: {
         options: {

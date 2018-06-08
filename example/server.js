@@ -12,8 +12,8 @@ const Relish = require('../')({
   }
 })
 
-const server = new Hapi.Server()
-server.connection({
+const server = Hapi.Server({
+  host: '0.0.0.0',
   port: 3000,
   routes: {
     validate: {
@@ -42,9 +42,12 @@ server.route({
       }
     }
   },
-  handler: (request, reply) => reply()
+  handler: (request, h) => h.response()
 })
 
-server.start(() => {
-  console.log('Server running at:', server.info.uri)
-})
+const init = async () => {
+  await server.start()
+  console.log(`Server is running at ${server.info.uri}`)
+}
+
+init()
