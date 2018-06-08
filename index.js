@@ -56,7 +56,6 @@ const Relish = function Relish (opts) {
     return this.exports
   }
 
-  // this.exports.failAction = (request, reply, source, error) => {
   this.exports.failAction = (request, h, err) => {
     // parse error object
     const errors = this.parseError(err)
@@ -64,6 +63,7 @@ const Relish = function Relish (opts) {
     // build main error message
     const errorMessage = errors.map((e) => e.message).join(', ')
 
+    // retrieve validation failure source
     const source = err.output.payload.validation.source
 
     // format error response
