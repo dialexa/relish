@@ -121,7 +121,7 @@ Relish Version | Hapi Version      | Joi Version
 3.x            | >= 17.x           | >= 11.x
 
 ## API Documentation
-See the [API Documentation](https://github.com/dialexa/relish/blob/v2.1.0/API.md) for reference.
+See the [API Documentation](https://github.com/dialexa/relish/blob/v3.0.0/API.md) for reference.
 
 <!-- Badge URLs -->
 [logo]:images/relish.png

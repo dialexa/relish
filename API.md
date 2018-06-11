@@ -1,5 +1,5 @@
 <!-- version -->
-API Documentation - `v2.1.0`
+API Documentation - `v3.0.0`
 ---
 <!-- versionstop -->
 
@@ -7,7 +7,7 @@ API Documentation - `v2.1.0`
 
 - [Relish](#relish)
   - [_constructor_ / `options([opts])`](#_constructor_--optionsopts)
-  - [`failAction(request, reply, source, error)`](#failactionrequest-reply-source-error)
+  - [`failAction(request, h, err)`](#failactionrequest-h-err)
 
 <!-- tocstop -->
 
