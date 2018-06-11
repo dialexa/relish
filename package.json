@@ -13,10 +13,10 @@
     "postversion": "git push && git push --tags"
   },
   "engines": {
-    "node": ">= 7.0.0"
+    "node": ">= 8.9.0"
   },
   "peerDependencies": {
-    "hapi": ">= 16.6.1 < 17",
+    "hapi": ">= 17",
     "joi": ">= 11"
   },
   "author": "Dialexa",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "code": "~5.2.0",
     "coveralls": "~3.0.1",
-    "hapi": "~16.6.2",
+    "hapi": "~17.4.0",
     "joi": "~13.2.0",
     "lab": "~15.4.1",
     "markdown-toc": "~1.2.0",

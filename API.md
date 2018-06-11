@@ -45,7 +45,7 @@ const failAction = Relish.options({
 }).failAction
 ```
 
-## `failAction(request, reply, source, error)`
+## `failAction(request, h, err)`
 A helper function that can be used as a custom failAction handler in your Hapi.js [Route Options][hapi-route-options].
 
 <!-- URLs -->

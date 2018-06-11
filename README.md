@@ -92,16 +92,16 @@ server.route({
       }
     }
   },
-  handler: (request, reply) => reply()
+  handler: (request, h) => h.response()
 });
 ```
 
 #### Global Usage (alternative)
-You can apply this module to all routes by setting the failAction in your server connection options.
+You can apply this module to all routes by setting the failAction in your server options.
 
 ```js
-server.connection({
-  // ... other connection options
+Hapi.server({
+  // ... other server options
 
   routes: {
     validate: {
