@@ -17,7 +17,7 @@
   },
   "peerDependencies": {
     "@hapi/hapi": ">=18",
-    "@hapi/joi": ">=16"
+    "@hapi/joi": ">=15"
   },
   "author": "Dialexa",
   "contributors": [
