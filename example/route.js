@@ -1,7 +1,7 @@
 'use strict'
 
-const Hapi = require('hapi')
-const Joi = require('joi')
+const Hapi = require('@hapi/hapi')
+const Joi = require('@hapi/joi')
 const Relish = require('../')()
 
 const server = new Hapi.Server({
@@ -26,9 +26,9 @@ server.route({
       // call the module's failAction
       failAction: Relish.options({
         messages: {
-          'timestamp': 'This request requires a timestamp',
-          'email': 'Generic email message',
-          'data': 'You must include a data object in your payload',
+          timestamp: 'This request requires a timestamp',
+          email: 'Generic email message',
+          data: 'You must include a data object in your payload',
           'data.name': 'Please give us your name',
           'data.phone': 'Please give us your name'
         }

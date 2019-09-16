@@ -1,6 +1,6 @@
 'use strict'
 
-const Hoek = require('hoek')
+const Hoek = require('@hapi/hoek')
 
 const internals = {}
 
@@ -15,7 +15,7 @@ const Relish = function Relish (opts) {
 
   this.parseError = (error) => {
     return error.details.map((i) => {
-      let err = {
+      const err = {
         key: i.context.key,
         path: i.path.join('.'),
         message: this._opts.stripQuotes ? i.message.replace(/"/g, '') : i.message,

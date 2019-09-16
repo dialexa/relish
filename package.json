@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard --verbose | snazzy",
-    "test": "npm run lint && lab -r console -v -t 100 -a code",
-    "test-ci": "standard && lab -r lcov -t 100 -a code | ./node_modules/.bin/coveralls",
+    "test": "npm run lint && lab -r console -v -t 100 -a @hapi/code",
+    "test-ci": "standard && lab -r lcov -t 100 -a @hapi/code | ./node_modules/.bin/coveralls",
     "test-cov-html": "lab -r html -o coverage.html",
     "generate-docs": "node generate-docs.js",
     "version": "npm run generate-docs && git add README.md API.md",
@@ -16,8 +16,8 @@
     "node": ">= 8.9.0"
   },
   "peerDependencies": {
-    "hapi": ">= 17",
-    "joi": ">= 11"
+    "@hapi/hapi": ">=18",
+    "@hapi/joi": ">=16"
   },
   "author": "Dialexa",
   "contributors": [
@@ -41,16 +41,16 @@
   "homepage": "https://github.com/dialexa/relish",
   "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
-    "hoek": "~5.0.3"
+    "@hapi/hoek": "~8.2.4"
   },
   "devDependencies": {
-    "code": "~5.2.0",
-    "coveralls": "~3.0.1",
-    "hapi": "~17.4.0",
-    "joi": "~13.2.0",
-    "lab": "~15.4.1",
+    "@hapi/code": "~6.0.0",
+    "coveralls": "~3.0.6",
+    "@hapi/hapi": "~18.4.0",
+    "@hapi/joi": "~16.0.1",
+    "@hapi/lab": "~20.2.2",
     "markdown-toc": "~1.2.0",
-    "snazzy": "~7.1.1",
-    "standard": "~11.0.1"
+    "snazzy": "~8.0.0",
+    "standard": "~14.3.0"
   }
 }
