@@ -1,6 +1,6 @@
 'use strict'
 
-const Hoek = require('hoek')
+const Hoek = require('@hapi/hoek')
 
 const internals = {}
 
@@ -15,7 +15,7 @@ const Relish = function Relish (opts) {
 
   this.parseError = (error) => {
     return error.details.map((i) => {
-      let err = {
+      const err = {
         key: i.context.key,
         path: i.path.join('.'),
         message: this._opts.stripQuotes ? i.message.replace(/"/g, '') : i.message,
@@ -29,9 +29,9 @@ const Relish = function Relish (opts) {
       }
 
       // set custom message (if exists)
-      if (this._opts.messages.hasOwnProperty(err.path)) {
+      if (Object.prototype.hasOwnProperty.call(this._opts.messages, err.path)) {
         err.message = this._opts.messages[err.path]
-      } else if (this._opts.messages.hasOwnProperty(err.key)) {
+      } else if (Object.prototype.hasOwnProperty.call(this._opts.messages, err.key)) {
         err.message = this._opts.messages[err.key]
       }
 
