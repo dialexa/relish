@@ -29,9 +29,9 @@ const Relish = function Relish (opts) {
       }
 
       // set custom message (if exists)
-      if (this._opts.messages.hasOwnProperty(err.path)) {
+      if (Object.prototype.hasOwnProperty.call(this._opts.messages, err.path)) {
         err.message = this._opts.messages[err.path]
-      } else if (this._opts.messages.hasOwnProperty(err.key)) {
+      } else if (Object.prototype.hasOwnProperty.call(this._opts.messages, err.key)) {
         err.message = this._opts.messages[err.key]
       }
 

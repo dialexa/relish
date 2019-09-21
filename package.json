@@ -47,10 +47,10 @@
     "@hapi/code": "~6.0.0",
     "coveralls": "~3.0.6",
     "@hapi/hapi": "~18.4.0",
-    "@hapi/joi": "~16.0.1",
+    "@hapi/joi": "~16.1.4",
     "@hapi/lab": "~20.2.2",
     "markdown-toc": "~1.2.0",
     "snazzy": "~8.0.0",
-    "standard": "~14.3.0"
+    "standard": "~14.3.1"
   }
 }

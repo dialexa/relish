@@ -16,7 +16,7 @@ const {
 const { expect } = Code
 
 const path = '/test'
-const payload = {
+const payload = Joi.object({
   timestamp: Joi.date().required(),
   data: Joi.object({
     name: Joi.string().required().label('Full Name'),
@@ -24,7 +24,7 @@ const payload = {
     phone: Joi.number().required(),
     dob: Joi.date().optional()
   }).required()
-}
+})
 const customMessages = {
   timestamp: 'This request requires a timestamp',
   email: 'Generic email message',
@@ -222,7 +222,7 @@ describe('Relish', () => {
         res.result.validation.errors.map((error) => {
           if (error.path === 'data.name') {
             passed = true
-            expect(error.hasOwnProperty('label')).to.be.true()
+            expect(Object.prototype.hasOwnProperty.call(error, 'label')).to.be.true()
             expect(error.label).to.equal('Full Name')
           }
         })
