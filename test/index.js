@@ -1,5 +1,6 @@
 'use strict'
 
+const Boom = require('@hapi/boom')
 const Hapi = require('hapi')
 const Joi = require('joi')
 const Relish = require('../')
@@ -74,6 +75,18 @@ before(async () => {
       validate: {
         payload: payload,
         failAction: Relish().options({ messages: customMessages }).failAction
+      }
+    },
+    handler: (request, reply) => reply()
+  }, {
+    method: 'POST',
+    path: path + '/custom-validation',
+    config: {
+      validate: {
+        payload: async (value, options) => {
+          throw Boom.badRequest('Failed custom validation')
+        },
+        failAction: Relish().failAction
       }
     },
     handler: (request, reply) => reply()
@@ -228,6 +241,16 @@ describe('Relish', () => {
         })
 
         expect(passed).to.be.true()
+      })
+
+      it('should not manipulate non-Joi errors', async () => {
+        const res = await server.inject({
+          method: 'POST',
+          url: path + '/custom-validation',
+          payload: {}
+        })
+
+        expect(res.statusCode).to.equal(400)
       })
     })
   })
