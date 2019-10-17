@@ -57,6 +57,10 @@ const Relish = function Relish (opts) {
   }
 
   this.exports.failAction = (request, h, err) => {
+    if (!err.isJoi) {
+      return err
+    }
+
     // parse error object
     const errors = this.parseError(err)
 
