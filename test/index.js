@@ -1,11 +1,11 @@
 'use strict'
 
-const Hapi = require('hapi')
-const Joi = require('joi')
+const Hapi = require('@hapi/hapi')
+const Joi = require('@hapi/joi')
 const Relish = require('../')
 
-const Code = require('code')
-const Lab = require('lab')
+const Code = require('@hapi/code')
+const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
 const {
   after,
@@ -16,7 +16,7 @@ const {
 const { expect } = Code
 
 const path = '/test'
-const payload = {
+const payload = Joi.object({
   timestamp: Joi.date().required(),
   data: Joi.object({
     name: Joi.string().required().label('Full Name'),
@@ -24,7 +24,7 @@ const payload = {
     phone: Joi.number().required(),
     dob: Joi.date().optional()
   }).required()
-}
+})
 const customMessages = {
   'timestamp': 'This request requires a timestamp',
   'email': 'Generic email message',

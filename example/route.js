@@ -1,7 +1,7 @@
 'use strict'
 
-const Hapi = require('hapi')
-const Joi = require('joi')
+const Hapi = require('@hapi/hapi')
+const Joi = require('@hapi/joi')
 const Relish = require('../')()
 
 const server = new Hapi.Server({
@@ -14,7 +14,7 @@ server.route({
   path: '/',
   config: {
     validate: {
-      payload: {
+      payload: Joi.object({
         timestamp: Joi.date().required(),
         data: Joi.object({
           name: Joi.string().required().label('Full Name'),
@@ -22,7 +22,7 @@ server.route({
           phone: Joi.number().required(),
           dob: Joi.date().optional()
         }).required()
-      },
+      }),
       // call the module's failAction
       failAction: Relish.options({
         messages: {
